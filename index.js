@@ -14,6 +14,32 @@ function makeTeam() {
 }
 
 
+const generateHTMLPAGE = ({}) =>
 
+inquirer
+  .prompt([
+    {
+      type: '',
+      message: '',
+      name: '',
+    },
+    {
+      type: 'checkbox',
+      message: '',
+      choices: ["View all Employees","Add an Employee","Exit"],
+      name: '',
 
+    },
+    {
+      type: 'input',
+      message: '',
+      name: '',
+    },
+  ])
 
+  .then((answers) => {
+    const htmlPage = generateHTMLPAGE(answers);
+  fs.writeFile('team.html', htmlPage, (error) =>
+  error ? console.error(error) : console.log('Successfully created team.html page!')
+);
+  })
