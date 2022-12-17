@@ -1,3 +1,4 @@
+
 const managerCard = (manager) => {
     return `<div class="individual-cards">
     <div class="card-header">
@@ -6,37 +7,32 @@ const managerCard = (manager) => {
    </div>
 
    <div class="employee-facts">
-       <p>ID:</p>
-       <p>Email</p>
-       <p>Office number:</p>
+       <p>ID: ${manager.mngrID}</p>
+       <p>Email: ${manager.mngrEmail} </p>
+       <p>Office number:${manager.mngrOffice}</p>
    </div>
 </div>`
 }
 
-
-const generateHTML = function(data)  {
+//data
+const generateHTML = (data) => {
     console.log(data)
     htmlArr = [];
     for(let i = 0; i < data.length; i++) {
         const emp = data[i];
         const empRole = emp.getRole();
-
         if (empRole === "Manager") {
             const mngrCard = managerCard(emp)
             htmlArr.push(mngrCard)
         }
-
         if (empRole === "Intern") {
             const internCard = managerCard(emp)
             htmlArr.push(internCard)
         }
-
         if (empRole === "Engineer") {
             const enginCard = managerCard(emp)
             htmlArr.push(enginCard)
         }
-
-
     }
     const empCards = htmlArr.join("")
     const genTeam = generateTeam(empCards);

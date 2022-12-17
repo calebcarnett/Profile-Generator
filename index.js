@@ -1,25 +1,12 @@
 const Intern = require("./library/intern");
 const Engineer = require("./library/engineer");
 const Manager = require("./library/manager");
+
 const fs = require("fs");
 const inquirer = require("inquirer");
-const generateHTML = require("./src/generateHTML");
+const generateHTML = require("./src/teamGenerator");
 
 var teamArr = [];
-
-// function makeTeam() {
-//   var manager = new Manager("Caleb", "3", "caleb@gmail.com", "101");
-//   var engineer = new Engineer("Jacob", "7", "jacob@gmail.com", "jnordan132");
-//   var intern = new Intern("hunter", "10", "hunter@gmail.com", "UTSA");
-//   teamArr.push(manager);
-//   teamArr.push(engineer);
-//   teamArr.push(intern);
-//   console.table(teamArr);
-// }
-
-// makeTeam()
-
-// const generateHTMLPAGE = ({}) =>
 
 const mngrPrompt = () => {
   return inquirer
@@ -30,7 +17,7 @@ const mngrPrompt = () => {
         name: "mngr",
       },
       {
-        type: "number",
+        type: "input",
         message: "Enter the team managers ID number",
         name: "mngrID",
       },
@@ -96,6 +83,7 @@ const employeePrompt = () => {
         name: "addAnother",
       },
     ])
+
     .then((employeeData) => {
       const { role, EName, EID, Eemail, Ischool, Egithub } = employeeData;
       let employee;
@@ -123,51 +111,14 @@ const createHTML = (data) => {
 };
 
 mngrPrompt()
-  //  .then(employeePrompt)
+
   .then((teamArr) => {
     return generateHTML(teamArr);
   })
-  .then((teamPage) => {
-    return createHTML(teamPage);
+  .then((htmlPage) => {
+    return createHTML(htmlPage);
   })
   .catch((err) => {
     console.log(err);
   });
 
-// {
-//   type: 'checkbox',
-//   message: 'Select an employee or finish building your team',
-//   choices: ["Add Engineer","Add Intern","I am finished building my team"],
-//   name: 'menu',
-// },
-
-//   .then((responses) => {
-//     const htmlPage = generateHTMLPAGE(responses);
-//   fs.writeFile('./dist/team.html', htmlPage, (error) =>
-//   error ? console.error(error) : console.log('Successfully created team.html page!')
-// );
-//   })
-//   inquirer.prompt([
-//     {
-//       type: 'number',
-//       message: 'Enter interns name',
-//       name: 'IName',
-//     },
-//     {
-//         type: 'number',
-//         message: 'Enter interns ID number',
-//         name: 'IID',
-//       },
-//       {
-//         type: 'input',
-//         message: 'Enter the interns email',
-//         name: 'Iemail',
-//       },
-//       {
-//         type: 'input',
-//         message: 'Enter the interns school',
-//         name: 'Ischool',
-//       },
-//   ])
-//   }
-// }
