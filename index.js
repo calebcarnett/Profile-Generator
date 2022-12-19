@@ -6,6 +6,7 @@ const fs = require("fs");
 const inquirer = require("inquirer");
 const generateHTML = require("./src/teamGenerator");
 
+
 var teamArr = [];
 
 const mngrPrompt = () => {
@@ -37,26 +38,28 @@ const mngrPrompt = () => {
       const manager = new Manager(mngr, mngrID, mngrEmail, mngrOffice);
       teamArr.push(manager);
       console.log(teamArr);
+      return teamArr
     });
 };
-// mngrPrompt()
+
 
 const employeePrompt = () => {
   inquirer
     .prompt([
       {
         type: "list",
-        message: "What is this employes role?",
+        message: "What is this employees role?",
         name: "role",
         choices: ["Engineer", "Intern"],
       },
       {
-        type: "number",
+        type: "input",
         message: "Enter employee name",
         name: "EName",
       },
       {
-        type: "number",
+        type: "input",
+
         message: "Enter employee ID number",
         name: "EID",
       },
@@ -81,16 +84,19 @@ const employeePrompt = () => {
         type: "confirm",
         message: "Would you like to add another employee?",
         name: "addAnother",
+        default: false
       },
     ])
 
-    .then((employeeData) => {
-      const { role, EName, EID, Eemail, Ischool, Egithub } = employeeData;
+    .then(employeeData => {
+      const { role, EName, EID, Eemail, Ischool, Egithub, addAnother } = employeeData;
       let employee;
       if (role === "Engineer") {
         employee = new Engineer(EName, EID, Eemail, Egithub);
+        console.log(employee)
       } else if (role === "Intern") {
         employee = new Intern(EName, EID, Eemail, Ischool);
+        console.log(employee)
       }
       teamArr.push(employee);
       if (addAnother) {
@@ -98,27 +104,25 @@ const employeePrompt = () => {
       } else {
         return teamArr;
       }
-    });
+    })
 };
 
-const createHTML = (data) => {
-  console.log(data);
-  fs.writeFile("./dist/team.html", data, (error) =>
-    error
-      ? console.error(error)
+const writeFile = (data) => {
+  fs.writeFile("./dist/team.html", data, error =>
+    error ? console.error(error)
       : console.log("Successfully created team.html page!")
   );
 };
 
 mngrPrompt()
-
-  .then((teamArr) => {
+.then(employeePrompt).then(teamArr => {
     return generateHTML(teamArr);
-  })
-  .then((htmlPage) => {
-    return createHTML(htmlPage);
+  }) 
+  .then(data => {
+    return writeFile(data);
   })
   .catch((err) => {
     console.log(err);
   });
+
 
