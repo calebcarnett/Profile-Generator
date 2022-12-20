@@ -1,3 +1,5 @@
+
+//created a class for the employee which is my parent class
 class Employee {
     constructor(name, id, email) {
         this.name = name;
@@ -20,7 +22,7 @@ class Employee {
         return "Employee"
     }
 }
-
+//exports employee class so i can be ran in the test foldder
 module.exports = Employee
 
 

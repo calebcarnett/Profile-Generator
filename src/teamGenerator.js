@@ -1,4 +1,4 @@
-
+//creates a manager card
 const managerCard = (manager => {
     return `<div class="individual-cards">
     <div class="card-header">
@@ -14,6 +14,7 @@ const managerCard = (manager => {
    </div>
 </div>`
 })
+//creates a intern card
 const internsCard = (intern => {
     return `<div class="individual-cards">
     <div class="card-header">
@@ -28,6 +29,7 @@ const internsCard = (intern => {
    </div>
 </div>`
 })
+//creates a engineer card
 const engineerCard = (engineer => {
     return `<div class="individual-cards">
     <div class="card-header">
