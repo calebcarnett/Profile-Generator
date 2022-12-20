@@ -32,6 +32,7 @@ const mngrPrompt = () => {
         message: "Enter the team managers office number",
         name: "mngrOffice",
       },
+
     ])
     .then((mngrData) => {
       const { mngr, mngrID, mngrEmail, mngrOffice } = mngrData;
@@ -39,12 +40,14 @@ const mngrPrompt = () => {
       teamArr.push(manager);
       console.log(teamArr);
       return teamArr
+      
+  
     });
 };
 
 
 const employeePrompt = () => {
-  inquirer
+  return inquirer
     .prompt([
       {
         type: "list",

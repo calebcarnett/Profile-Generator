@@ -3,7 +3,8 @@ const managerCard = (manager => {
     return `<div class="individual-cards">
     <div class="card-header">
        <h1>${manager.name}</h1>
-       <h2>Manager</h2>
+       <h2 style="font-weight: bold;">
+       <i class="fa-solid fa-mug-hot"></i>Manager</h2>
    </div>
 
    <div class="employee-facts">
@@ -17,13 +18,13 @@ const internsCard = (intern => {
     return `<div class="individual-cards">
     <div class="card-header">
        <h1>${intern.name}</h1>
-       <h2>Manager</h2>
+       <h2 style="font-weight: bold;">Intern</h2>
    </div>
 
    <div class="employee-facts">
        <p>ID: ${intern.id}</p>
        <p>Email: ${intern.email} </p>
-       <p>Office number:${intern.school}</p>
+       <p>School:${intern.school}</p>
    </div>
 </div>`
 })
@@ -31,13 +32,13 @@ const engineerCard = (engineer => {
     return `<div class="individual-cards">
     <div class="card-header">
        <h1>${engineer.name}</h1>
-       <h2>Manager</h2>
+       <h2 style="font-weight: bold;">Engineer</h2>
    </div>
 
    <div class="employee-facts">
        <p>ID: ${engineer.id}</p>
        <p>Email: ${engineer.email} </p>
-       <p>Office number:${engineer.school}</p>
+       <p>Github:${engineer.github}</p>
    </div>
 </div>`
 })

@@ -1,5 +1,6 @@
+//required manager.js from the library folder
 const Manager = require('../library/manager')
-
+//Made a new manager to test each value
 const manager = new Manager("Caleb", "3", "caleb@gmail.com", "1234")
 
 describe('Manager', () => {
@@ -10,7 +11,7 @@ describe('Manager', () => {
         expect(manager.officeNumber).toEqual('1234')
     })
 });
-
+//This will test if the managers role(), officenumber() return the correct values
 it('should get the github of the engineer from the getGithub method', () => {
     expect(manager.getOfficeNumber()).toEqual('1234')
 });
