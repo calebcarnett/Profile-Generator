@@ -1,3 +1,4 @@
+//pulls in the classes from the library folder
 const Intern = require("./library/intern");
 const Engineer = require("./library/engineer");
 const Manager = require("./library/manager");
@@ -6,9 +7,9 @@ const fs = require("fs");
 const inquirer = require("inquirer");
 const generateHTML = require("./src/teamGenerator");
 
-
+//set an empty array to push the team managers to
 var teamArr = [];
-
+//manager prompt with inquirer
 const mngrPrompt = () => {
   return inquirer
     .prompt([
@@ -34,6 +35,9 @@ const mngrPrompt = () => {
       },
 
     ])
+    //the data is deconstructed and assigned to mngrData, I assign it to a manager constant and push ito the the
+    //team arr, had to make sure I returned the teamArr otherwise I could not access the data. I kept getting data
+    //undefined before doing this
     .then((mngrData) => {
       const { mngr, mngrID, mngrEmail, mngrOffice } = mngrData;
       const manager = new Manager(mngr, mngrID, mngrEmail, mngrOffice);
@@ -45,7 +49,8 @@ const mngrPrompt = () => {
     });
 };
 
-
+//runs the employee prompt for intern and engineer. My tutor showed me how to use the when statement.
+//this statement only shows the question if a specific choice is selected form the role prompt
 const employeePrompt = () => {
   return inquirer
     .prompt([
@@ -90,9 +95,11 @@ const employeePrompt = () => {
         default: false
       },
     ])
-
+//the data is deconstructed and assigned to employeeData
     .then(employeeData => {
       const { role, EName, EID, Eemail, Ischool, Egithub, addAnother } = employeeData;
+      //empty variable that will be assigned depending on what role is seleted. If the role is selected a new class is made
+      //and is assigned the the empty variable
       let employee;
       if (role === "Engineer") {
         employee = new Engineer(EName, EID, Eemail, Egithub);
@@ -101,6 +108,8 @@ const employeePrompt = () => {
         employee = new Intern(EName, EID, Eemail, Ischool);
         console.log(employee)
       }
+      //the newly added employee is then pushed to the teamArr, if addAnother option is selected it will prompt the user
+      // with the original employeePrompt
       teamArr.push(employee);
       if (addAnother) {
         return employeePrompt(teamArr);
@@ -109,7 +118,7 @@ const employeePrompt = () => {
       }
     })
 };
-
+//write file is used to creat the team.html file with the data given. 
 const writeFile = (data) => {
   fs.writeFile("./dist/team.html", data, error =>
     error ? console.error(error)
@@ -117,6 +126,8 @@ const writeFile = (data) => {
   );
 };
 
+//I had a tutor and askbcs help me with this portion, I kept getting an erorr until i added the employee prompt in quotes after the mngrprompt
+//these call backs decide the order the functions should run
 mngrPrompt()
 .then(employeePrompt).then(teamArr => {
     return generateHTML(teamArr);
