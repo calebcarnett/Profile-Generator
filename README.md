@@ -16,6 +16,7 @@ This is a Node.js command-line application that takes in information about emplo
   
  ## Usage
 Please watch the video below for explanation on how to use this application
+https://drive.google.com/file/d/1pVxv4X7sPrXUjNCytXf2ewvoFzlmRgc8/view
 
  ## Contributions
  No
