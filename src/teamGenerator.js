@@ -4,12 +4,12 @@ const managerCard = (manager => {
     <div class="card-header">
        <h1>${manager.name}</h1>
        <h2 style="font-weight: bold;">
-       <i class="fa-solid fa-mug-hot"></i>Manager</h2>
+       <i class="fa fa-coffee"></i>Manager</h2>
    </div>
-
+  
    <div class="employee-facts">
        <p>ID: ${manager.id}</p>
-       <p>Email: ${manager.email} </p>
+       <p>Email: <a href="mailto:${manager.email}">${manager.email}</a></p>
        <p>Office number:${manager.officeNumber}</p>
    </div>
 </div>`
@@ -19,12 +19,12 @@ const internsCard = (intern => {
     return `<div class="individual-cards">
     <div class="card-header">
        <h1>${intern.name}</h1>
-       <h2 style="font-weight: bold;">Intern</h2>
+       <h2><i class="fa fa-graduation-cap"></i>Intern</h2>
    </div>
 
    <div class="employee-facts">
        <p>ID: ${intern.id}</p>
-       <p>Email: ${intern.email} </p>
+       <p>Email: <a href="mailto:${intern.email}">${intern.email}</a> </p>
        <p>School:${intern.school}</p>
    </div>
 </div>`
@@ -34,13 +34,13 @@ const engineerCard = (engineer => {
     return `<div class="individual-cards">
     <div class="card-header">
        <h1>${engineer.name}</h1>
-       <h2 style="font-weight: bold;">Engineer</h2>
+       <h2><i class="fa fa-building"></i>Engineer</h2>
    </div>
 
    <div class="employee-facts">
        <p>ID: ${engineer.id}</p>
-       <p>Email: ${engineer.email} </p>
-       <p>Github:${engineer.github}</p>
+       <p>Email:<a href="mailto:${engineer.email}">${engineer.email}</a></p>
+       <p>Github: <a href=https://github.com/${engineer.github}>${engineer.github}</a></p>
    </div>
 </div>`
 })

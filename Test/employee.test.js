@@ -1,6 +1,6 @@
-const { default: expect } = require('expect');
+//require employee.js from the library folder
 const Employee = require('../library/Employee')
-
+//create a new employee so that we can test the variable 
 const employee = new Employee("Caleb", "3", "caleb@gmail.com",)
 
 describe('Employee', () => {
@@ -10,7 +10,8 @@ describe('Employee', () => {
         expect(employee.email).toEqual('caleb@gmail.com')
     })
 });
-
+//tests the name, id, email, and role of the employee by running "npm run test" in the command line
+//this will test the class employee and make sure each function returns the correct value
 it('should get the id of the employee from the getName method', () => {
     expect(employee.getName()).toEqual('Caleb')
 });
