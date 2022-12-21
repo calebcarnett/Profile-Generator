@@ -11,8 +11,8 @@ This is a Node.js command-line application that takes in information about emplo
  
  
  ## Installation
- npm install inquirer@8.2.4
- npm install jest
+ * npm install inquirer@8.2.4
+ * npm install jest
   
  ## Usage
 Please watch the video below for explanation on how to use this application
